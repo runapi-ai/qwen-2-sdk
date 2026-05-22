@@ -1,4 +1,24 @@
-# Qwen Image API SDK for RunAPI
+<p align="center">
+  <a href="https://runapi.ai"><img src="https://runapi.ai/icon.svg" height="56" alt="RunAPI"></a>
+</p>
+
+<h3 align="center">
+  <a href="https://github.com/runapi-ai/qwen-2-sdk">Qwen 2 API SDK for RunAPI</a>
+</h3>
+
+<p align="center">
+  Qwen 2 API SDKs for JavaScript, Ruby, and Go on RunAPI.
+</p>
+
+<div align="center">
+
+[![npm](https://img.shields.io/npm/v/@runapi.ai/qwen-2)](https://www.npmjs.com/package/@runapi.ai/qwen-2)
+[![RubyGems](https://img.shields.io/gem/v/runapi-qwen-2)](https://rubygems.org/gems/runapi-qwen-2)
+[![Go Reference](https://pkg.go.dev/badge/github.com/runapi-ai/qwen-2-sdk/go.svg)](https://pkg.go.dev/github.com/runapi-ai/qwen-2-sdk/go)
+[![License](https://img.shields.io/github/license/runapi-ai/qwen-2-sdk)](https://github.com/runapi-ai/qwen-2-sdk/blob/main/LICENSE)
+
+</div>
+<br/>
 
 The qwen image api SDK packages JavaScript, Ruby, and Go clients for Qwen 2 on RunAPI. Use this qwen image api SDK for text-to-image, image-to-image, edit, and creative production workflows that need typed installs, JSON request bodies, task polling, and consistent RunAPI errors across services.
 
@@ -8,7 +28,7 @@ Qwen 2 belongs to the Alibaba catalog on RunAPI. The public model page is https:
 
 ```bash
 npm install @runapi.ai/qwen-2
-gem install runapi-qwen_2
+gem install runapi-qwen-2
 go get github.com/runapi-ai/qwen-2-sdk/go@latest
 ```
 
@@ -41,7 +61,7 @@ For short scripts, use `run` with the same JSON body to create the task and wait
 ## Repository layout
 
 - `js/` publishes `@runapi.ai/qwen-2`.
-- `ruby/` publishes `runapi-qwen_2` when RubyGems publishing resumes.
+- `ruby/` publishes `runapi-qwen-2` when RubyGems publishing resumes.
 - `go/` publishes `github.com/runapi-ai/qwen-2-sdk/go` and depends on `github.com/runapi-ai/core-sdk/go`.
 
 ## Public links
@@ -67,7 +87,7 @@ Default pricing link for the qwen image api SDK: https://runapi.ai/models/qwen-2
 
 ### Which package should I install for qwen image api work?
 
-Install the model package for your language: `@runapi.ai/qwen-2`, `runapi-qwen_2`, or `github.com/runapi-ai/qwen-2-sdk/go`. Install core SDK packages only when you are building shared SDK infrastructure.
+Install the model package for your language: `@runapi.ai/qwen-2`, `runapi-qwen-2`, or `github.com/runapi-ai/qwen-2-sdk/go`. Install core SDK packages only when you are building shared SDK infrastructure.
 
 ### Where should public links point?
 
