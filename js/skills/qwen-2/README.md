@@ -1,4 +1,25 @@
-# Qwen 2 Image API Skill for RunAPI
+<p align="center">
+  <a href="https://github.com/runapi-ai/qwen-2">
+    <h3 align="center">Qwen 2 Image API Skill for RunAPI</h3>
+  </a>
+</p>
+
+<p align="center">
+  Install this agent skill, inspect Qwen 2 fields, then run jobs through the RunAPI CLI.
+</p>
+
+<p align="center">
+  <a href="https://runapi.ai/models/qwen-2"><strong>Model Reference</strong></a> · <a href="https://github.com/runapi-ai/cli"><strong>CLI</strong></a> · <a href="https://github.com/runapi-ai/qwen-2-sdk"><strong>SDK</strong></a>
+</p>
+
+<div align="center">
+
+[![skills.sh](https://www.skills.sh/b/runapi-ai/qwen-2)](https://www.skills.sh/runapi-ai/qwen-2/qwen-2)
+[![ClawHub](https://img.shields.io/badge/ClawHub-runapi--qwen--2-111827)](https://clawhub.ai/runapi-ai/runapi-qwen-2)
+[![License](https://img.shields.io/github/license/runapi-ai/qwen-2)](https://github.com/runapi-ai/qwen-2/blob/main/LICENSE)
+
+</div>
+<br/>
 
 Generate, transform, and edit images with Qwen 2 text-to-image, image-to-image, and image editing. This skill helps Claude Code, Codex, Gemini CLI, Cursor, and 50+ agents integrate Qwen 2 through RunAPI.
 
@@ -7,10 +28,21 @@ The canonical agent file is `skills/qwen-2/SKILL.md`.
 ## Install
 
 ```bash
-npx skills add runapi-ai/qwen2 -g
+npx skills add runapi-ai/qwen-2 -g
 ```
 
-Or manually: clone this repo and copy `skills/qwen-2/` into your agent's skills directory.
+Or paste this prompt to your AI agent:
+
+```text
+Install the qwen-2 skill for me:
+
+1. Clone https://github.com/runapi-ai/qwen-2
+2. Copy the skills/qwen-2/ directory into your
+   user-level skills directory (e.g. ~/.claude/skills/
+   for Claude Code, ~/.codex/skills/ for Codex).
+3. Verify that SKILL.md is present.
+4. Confirm the install path when done.
+```
 
 ## Quick example
 
