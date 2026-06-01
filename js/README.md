@@ -1,6 +1,6 @@
 # Qwen Image API JavaScript SDK for RunAPI
 
-The qwen image api JavaScript SDK is the language-specific package for Qwen 2 on RunAPI. Use this qwen image api package for text-to-image, image-to-image, edit, and creative production flows when your application needs JSON request bodies, task status lookup, and consistent RunAPI errors in JavaScript.
+The qwen image api JavaScript SDK is the language-specific package for Qwen 2 on RunAPI. Use this qwen image api package for text-to-image, image editing, and creative production flows when your application needs JSON request bodies, task status lookup, and consistent RunAPI errors in JavaScript.
 
 This qwen image api README is the JavaScript package guide inside the public `qwen2-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/qwen-2; for API reference, use https://runapi.ai/docs#qwen-2; for SDK docs, use https://runapi.ai/docs#sdk-qwen-2.
 

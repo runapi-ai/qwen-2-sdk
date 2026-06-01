@@ -53,7 +53,7 @@ module RunApi
             raise Core::ValidationError, "Invalid model: #{model}. Must be one of: #{Types::TEXT_TO_IMAGE_MODELS.join(", ")}"
           end
 
-          validate_optional!(params, :image_size, Types::QWEN_IMAGE_SIZES)
+          validate_optional!(params, :aspect_ratio, Types::TEXT_TO_IMAGE_ASPECT_RATIOS)
           validate_optional!(params, :output_format, Types::OUTPUT_FORMATS)
         end
       end

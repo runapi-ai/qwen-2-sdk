@@ -21,7 +21,7 @@
 </div>
 <br/>
 
-Generate, transform, and edit images with Qwen 2 text-to-image, image-to-image, and image editing. This skill helps Claude Code, Codex, Gemini CLI, Cursor, and 50+ agents integrate Qwen 2 through RunAPI.
+Generate, remix, and edit images with Qwen 2 text-to-image, image remix, and image editing. This skill helps Claude Code, Codex, Gemini CLI, Cursor, and 50+ agents integrate Qwen 2 through RunAPI.
 
 The canonical agent file is `skills/qwen-2/SKILL.md`.
 
@@ -69,8 +69,8 @@ const result = await client.textToImage.run({
 ## Variants
 
 - [Text to image](https://runapi.ai/models/qwen-2/text-to-image)
-- [Image to image](https://runapi.ai/models/qwen-2/image-to-image)
-- [Image edit](https://runapi.ai/models/qwen-2/image-edit)
+- [Image remix](https://runapi.ai/models/qwen-2/remix-image)
+- [Image edit](https://runapi.ai/models/qwen-2/edit-image)
 
 ## Agent rules
 

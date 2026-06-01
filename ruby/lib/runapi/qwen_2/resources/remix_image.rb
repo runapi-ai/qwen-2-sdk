@@ -3,42 +3,42 @@
 module RunApi
   module Qwen2
     module Resources
-      # Qwen2 edit-image resource. Edits images with natural-language prompts.
-      class EditImage
+      # Qwen2 remix-image resource. Creates prompt-guided variations from a source image.
+      class RemixImage
         include RunApi::Core::ResourceHelpers
 
-        ENDPOINT = "/api/v1/qwen_2/edit_image"
+        ENDPOINT = "/api/v1/qwen_2/remix_image"
 
-        RESPONSE_CLASS = Types::EditImageResponse
-        COMPLETED_RESPONSE_CLASS = Types::CompletedEditImageResponse
+        RESPONSE_CLASS = Types::RemixImageResponse
+        COMPLETED_RESPONSE_CLASS = Types::CompletedRemixImageResponse
 
         def initialize(http)
           @http = http
         end
 
-        # Edit an image and wait until complete.
+        # Remix an image and wait until complete.
         #
-        # @param params [Hash] edit-image parameters
-        # @return [RunApi::Qwen2::Types::CompletedEditImageResponse] completed edit-image result
+        # @param params [Hash] remix-image parameters
+        # @return [RunApi::Qwen2::Types::CompletedRemixImageResponse] completed remix-image result
         def run(**params)
           task = create(**params)
           poll_until_complete { get(task.id) }
         end
 
-        # Create an edit-image task.
+        # Create a remix-image task.
         #
-        # @param params [Hash] edit-image parameters
-        # @return [RunApi::Qwen2::Types::EditImageResponse] task creation result with id
+        # @param params [Hash] remix-image parameters
+        # @return [RunApi::Qwen2::Types::RemixImageResponse] task creation result with id
         def create(**params)
           params = compact_params(params)
           validate_params!(params)
           request(:post, ENDPOINT, body: params)
         end
 
-        # Get edit-image status by task ID.
+        # Get remix-image status by task ID.
         #
         # @param id [String] task ID
-        # @return [RunApi::Qwen2::Types::EditImageResponse] current edit-image status
+        # @return [RunApi::Qwen2::Types::RemixImageResponse] current remix-image status
         def get(id)
           request(:get, "#{ENDPOINT}/#{id}")
         end
@@ -51,11 +51,10 @@ module RunApi
           raise Core::ValidationError, "source_image_url is required" unless param(params, :source_image_url)
 
           model = param(params, :model)
-          unless Types::EDIT_MODELS.include?(model)
-            raise Core::ValidationError, "Invalid model: #{model}. Must be one of: #{Types::EDIT_MODELS.join(", ")}"
+          unless Types::REMIX_IMAGE_MODELS.include?(model)
+            raise Core::ValidationError, "Invalid model: #{model}. Must be one of: #{Types::REMIX_IMAGE_MODELS.join(", ")}"
           end
 
-          validate_optional!(params, :aspect_ratio, Types::EDIT_IMAGE_ASPECT_RATIOS)
           validate_optional!(params, :output_format, Types::OUTPUT_FORMATS)
         end
       end

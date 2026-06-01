@@ -1,4 +1,4 @@
-// Package qwen2 provides the Qwen2 text-to-image and edit API client.
+// Package qwen2 provides the Qwen2 image generation and edit API client.
 package qwen2
 
 import (
@@ -9,17 +9,17 @@ import (
 )
 
 const (
-	textToImagePath   = "/api/v1/qwen_2/text_to_image"
-	imageToImagePath = "/api/v1/qwen_2/image_to_image"
-	editImagePath     = "/api/v1/qwen_2/edit_image"
+	textToImagePath = "/api/v1/qwen_2/text_to_image"
+	remixImagePath = "/api/v1/qwen_2/remix_image"
+	editImagePath   = "/api/v1/qwen_2/edit_image"
 )
 
-// Client is the Qwen2 text-to-image and edit API client.
+// Client is the Qwen2 image generation and edit API client.
 type Client struct {
 	// TextToImage provides text-to-image operations.
 	TextToImage *TextToImage
-	// ImageToImage provides image-to-image operations.
-	ImageToImage *ImageToImage
+	// RemixImage provides image remix operations.
+	RemixImage *RemixImage
 	// EditImage provides image edit operations.
 	EditImage *EditImage
 }
@@ -40,9 +40,9 @@ func NewClient(opts ...option.ClientOption) (*Client, error) {
 // NewClientWithHTTP creates a Qwen2 client with a pre-configured HTTP transport.
 func NewClientWithHTTP(httpClient core.HTTPClient) *Client {
 	return &Client{
-		TextToImage:  &TextToImage{http: httpClient},
-		ImageToImage: &ImageToImage{http: httpClient},
-		EditImage:    &EditImage{http: httpClient},
+		TextToImage: &TextToImage{http: httpClient},
+		RemixImage: &RemixImage{http: httpClient},
+		EditImage:  &EditImage{http: httpClient},
 	}
 }
 
@@ -61,19 +61,20 @@ func (r *TextToImage) Run(ctx context.Context, params TextToImageParams, opts ..
 	return core.RunAsync(ctx, func(ctx context.Context) (*core.TaskCreateResponse, error) { return r.Create(ctx, params, opts...) }, func(ctx context.Context, id string) (*TextToImageResponse, error) { return r.Get(ctx, id, opts...) }, pollingOptions)
 }
 
-type ImageToImage struct{ http core.HTTPClient }
+// RemixImage creates prompt-guided variations from a source image.
+type RemixImage struct{ http core.HTTPClient }
 
-func (r *ImageToImage) Create(ctx context.Context, params ImageToImageParams, opts ...option.RequestOption) (*core.TaskCreateResponse, error) {
+func (r *RemixImage) Create(ctx context.Context, params RemixImageParams, opts ...option.RequestOption) (*core.TaskCreateResponse, error) {
 	requestOptions, _ := option.ResolveRequestOptions(opts...)
-	return core.PostJSON[core.TaskCreateResponse](ctx, r.http, imageToImagePath, core.CompactParams(params), requestOptions)
+	return core.PostJSON[core.TaskCreateResponse](ctx, r.http, remixImagePath, core.CompactParams(params), requestOptions)
 }
-func (r *ImageToImage) Get(ctx context.Context, id string, opts ...option.RequestOption) (*ImageToImageResponse, error) {
+func (r *RemixImage) Get(ctx context.Context, id string, opts ...option.RequestOption) (*RemixImageResponse, error) {
 	requestOptions, _ := option.ResolveRequestOptions(opts...)
-	return core.GetJSON[ImageToImageResponse](ctx, r.http, core.ResourcePath(imageToImagePath, id), requestOptions)
+	return core.GetJSON[RemixImageResponse](ctx, r.http, core.ResourcePath(remixImagePath, id), requestOptions)
 }
-func (r *ImageToImage) Run(ctx context.Context, params ImageToImageParams, opts ...option.RequestOption) (*ImageToImageResponse, error) {
+func (r *RemixImage) Run(ctx context.Context, params RemixImageParams, opts ...option.RequestOption) (*RemixImageResponse, error) {
 	_, pollingOptions := option.ResolveRequestOptions(opts...)
-	return core.RunAsync(ctx, func(ctx context.Context) (*core.TaskCreateResponse, error) { return r.Create(ctx, params, opts...) }, func(ctx context.Context, id string) (*ImageToImageResponse, error) { return r.Get(ctx, id, opts...) }, pollingOptions)
+	return core.RunAsync(ctx, func(ctx context.Context) (*core.TaskCreateResponse, error) { return r.Create(ctx, params, opts...) }, func(ctx context.Context, id string) (*RemixImageResponse, error) { return r.Get(ctx, id, opts...) }, pollingOptions)
 }
 
 // EditImage edits input images according to a natural-language prompt.

@@ -21,10 +21,10 @@ describe('TextToImage', () => {
       const result = await textToImage.create({
         model: 'qwen-2-text-to-image',
         prompt: 'make it pop',
-        image_size: 'square_hd',
-        num_inference_steps: 30,
+        aspect_ratio: '16:9',
         output_format: 'png',
         seed: 42,
+        enable_safety_checker: false,
       });
 
       expect(mockHttp.request).toHaveBeenCalledWith(
@@ -34,10 +34,10 @@ describe('TextToImage', () => {
           body: {
             model: 'qwen-2-text-to-image',
             prompt: 'make it pop',
-            image_size: 'square_hd',
-            num_inference_steps: 30,
+            aspect_ratio: '16:9',
             output_format: 'png',
             seed: 42,
+            enable_safety_checker: false,
           },
         }
       );
@@ -51,7 +51,7 @@ describe('TextToImage', () => {
       await textToImage.create({
         model: 'qwen-2-text-to-image',
         prompt: 'x',
-        image_size: undefined,
+        aspect_ratio: undefined,
       });
 
       expect(mockHttp.request).toHaveBeenCalledWith(

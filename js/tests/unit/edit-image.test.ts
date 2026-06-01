@@ -19,10 +19,10 @@ describe('EditImage', () => {
 
       const editImage = new EditImage(mockHttp);
       const result = await editImage.create({
-        model: 'qwen-2-image-edit',
+        model: 'qwen-2-edit-image',
         prompt: 'make it pop',
-        image_url: 'https://example.com/in.jpg',
-        image_size: '1:1',
+        source_image_url: 'https://cdn.runapi.ai/public/samples/input.jpg',
+        aspect_ratio: '1:1',
         output_format: 'png',
         seed: 42,
       });
@@ -32,10 +32,10 @@ describe('EditImage', () => {
         '/api/v1/qwen_2/edit_image',
         {
           body: {
-            model: 'qwen-2-image-edit',
+            model: 'qwen-2-edit-image',
             prompt: 'make it pop',
-            image_url: 'https://example.com/in.jpg',
-            image_size: '1:1',
+            source_image_url: 'https://cdn.runapi.ai/public/samples/input.jpg',
+            aspect_ratio: '1:1',
             output_format: 'png',
             seed: 42,
           },
@@ -49,10 +49,10 @@ describe('EditImage', () => {
 
       const editImage = new EditImage(mockHttp);
       await editImage.create({
-        model: 'qwen-2-image-edit',
+        model: 'qwen-2-edit-image',
         prompt: 'x',
-        image_url: 'https://example.com/a.jpg',
-        image_size: undefined,
+        source_image_url: 'https://cdn.runapi.ai/public/samples/result.jpg',
+        aspect_ratio: undefined,
       });
 
       expect(mockHttp.request).toHaveBeenCalledWith(
@@ -60,9 +60,9 @@ describe('EditImage', () => {
         '/api/v1/qwen_2/edit_image',
         {
           body: {
-            model: 'qwen-2-image-edit',
+            model: 'qwen-2-edit-image',
             prompt: 'x',
-            image_url: 'https://example.com/a.jpg',
+            source_image_url: 'https://cdn.runapi.ai/public/samples/result.jpg',
           },
         }
       );

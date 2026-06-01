@@ -20,7 +20,7 @@
 </div>
 <br/>
 
-The qwen image api SDK packages JavaScript, Ruby, and Go clients for Qwen 2 on RunAPI. Use this qwen image api SDK for text-to-image, image-to-image, edit, and creative production workflows that need typed installs, JSON request bodies, task polling, and consistent RunAPI errors across services.
+The qwen image api SDK packages JavaScript, Ruby, and Go clients for Qwen 2 on RunAPI. Use this qwen image api SDK for text-to-image, image remix, edit, and creative production workflows that need typed installs, JSON request bodies, task polling, and consistent RunAPI errors across services.
 
 Qwen 2 belongs to the Alibaba catalog on RunAPI. The public model page is https://runapi.ai/models/qwen-2; variant pages below carry pricing, rate-limit, and commercial-usage details. The public `qwen-2-sdk` repository groups the JavaScript, Ruby, and Go packages for this model.
 
@@ -39,7 +39,7 @@ go get github.com/runapi-ai/qwen-2-sdk/go@latest
 - Use `create` for submit-only jobs, `get` for status lookup, and `run` for submit-and-poll scripts.
 - Handle authentication, validation, rate limits, insufficient credits, task failures, and polling timeouts through RunAPI SDK errors.
 
-The JavaScript client exposes textToImage, imageToImage, and editImage resources, and the Ruby and Go packages mirror the same RunAPI task lifecycle.
+The JavaScript client exposes textToImage, remixImage, and editImage resources, and the Ruby and Go packages mirror the same RunAPI task lifecycle.
 
 ## JavaScript quick start
 
@@ -78,8 +78,8 @@ For short scripts, use `run` with the same JSON body to create the task and wait
 
 Use the most specific qwen image api variant page for pricing, rate limits, and commercial usage:
 - [Text to image](https://runapi.ai/models/qwen-2/text-to-image)
-- [Image to image](https://runapi.ai/models/qwen-2/image-to-image)
-- [Image edit](https://runapi.ai/models/qwen-2/image-edit)
+- [Image remix](https://runapi.ai/models/qwen-2/remix-image)
+- [Image edit](https://runapi.ai/models/qwen-2/edit-image)
 
 Default pricing link for the qwen image api SDK: https://runapi.ai/models/qwen-2/text-to-image
 

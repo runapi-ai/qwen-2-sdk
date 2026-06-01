@@ -35,6 +35,7 @@ describe('Qwen2Client', () => {
 
   it('exposes editImage resource', () => {
     const client = new Qwen2Client({ apiKey: 'test-key' });
+    expect(client.remixImage).toBeDefined();
     expect(client.editImage).toBeDefined();
     expect(typeof client.editImage.run).toBe('function');
     expect(typeof client.editImage.create).toBe('function');
