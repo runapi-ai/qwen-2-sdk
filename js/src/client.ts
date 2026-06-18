@@ -1,10 +1,14 @@
-import { createHttpClient, type ClientOptions } from '@runapi.ai/core';
+import { BaseClient, type ClientOptions } from '@runapi.ai/core';
 import { TextToImage } from './resources/text-to-image';
 import { RemixImage } from './resources/remix-image';
 import { EditImage } from './resources/edit-image';
 
 /**
- * Qwen 2 image API client.
+ * Qwen 2 image generation, remixing, and editing API client.
+ *
+ * Three operations: pure text-to-image generation, remix (prompt-guided
+ * variation of a source image with configurable strength), and edit
+ * (targeted modifications to a source image).
  *
  * @example
  * ```typescript
@@ -20,18 +24,18 @@ import { EditImage } from './resources/edit-image';
  * });
  * ```
  */
-export class Qwen2Client {
-  /** Text-to-image operations. */
+export class Qwen2Client extends BaseClient {
+  /** Generate images from text prompts. */
   public readonly textToImage: TextToImage;
-  /** Image remix operations. */
+  /** Create prompt-guided variations from a source image with adjustable strength. */
   public readonly remixImage: RemixImage;
-  /** Edit-image operations. */
+  /** Apply targeted edits to a source image using natural-language prompts. */
   public readonly editImage: EditImage;
 
   constructor(options: ClientOptions = {}) {
-    const http = createHttpClient(options);
-    this.textToImage = new TextToImage(http);
-    this.remixImage = new RemixImage(http);
-    this.editImage = new EditImage(http);
+    super(options);
+    this.textToImage = new TextToImage(this.http);
+    this.remixImage = new RemixImage(this.http);
+    this.editImage = new EditImage(this.http);
   }
 }

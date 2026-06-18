@@ -83,6 +83,10 @@ Use the most specific qwen image api variant page for pricing, rate limits, and 
 
 Default pricing link for the qwen image api SDK: https://runapi.ai/models/qwen-2/text-to-image
 
+## Generated file storage
+
+RunAPI-generated file URLs are temporary. Download and store generated images, videos, audio, or other files in your own durable storage within 7 days; do not treat returned URLs as long-term assets.
+
 ## FAQ
 
 ### Which package should I install for qwen image api work?

@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "runapi-qwen-2"
+version = "0.1.0"
+description = "Qwen 2 text-to-image, remix-image, and edit-image client for RunAPI"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "Apache-2.0"
+authors = [{ name = "RunAPI", email = "contact@runapi.ai" }]
+keywords = ["runapi", "qwen-2", "text-to-image", "edit-image", "remix-image", "ai", "sdk"]
+dependencies = ["runapi-core"]
+
+[project.urls]
+Homepage = "https://runapi.ai/models/qwen-2"
+Documentation = "https://runapi.ai/docs#sdk-qwen-2"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/runapi"]
+
+[tool.uv]
+package = true
+
+[tool.uv.sources]
+runapi-core = { path = "../runapi-core", editable = true }
+
+[dependency-groups]
+dev = ["pytest>=8"]

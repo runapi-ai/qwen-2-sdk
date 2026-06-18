@@ -10,9 +10,16 @@ import type {
 
 const ENDPOINT = '/api/v1/qwen_2/text_to_image';
 
+/** Generates images from text prompts with optional seed for reproducibility. */
 export class TextToImage {
   constructor(private readonly http: HttpClient) {}
 
+  /**
+   * Generate an image from a natural-language prompt and wait until complete.
+   * @param params Text-to-image parameters.
+   * @param options Per-request and polling overrides.
+   * @returns The completed text-to-image result.
+   */
   async run(params: TextToImageParams, options?: RequestOptions & PollingOptions): Promise<CompletedTextToImageResponse> {
     const { id } = await this.create(params, options);
     const response = await pollUntilComplete<TextToImageResponse>(() => this.get(id, options), {
@@ -22,6 +29,12 @@ export class TextToImage {
     return response as CompletedTextToImageResponse;
   }
 
+  /**
+   * Create a text-to-image task; returns immediately with a task id.
+   * @param params Text-to-image parameters.
+   * @param options Per-request overrides.
+   * @returns The task creation result with id.
+   */
   async create(params: TextToImageParams, options?: RequestOptions): Promise<TaskCreateResponse> {
     return this.http.request<TaskCreateResponse>('POST', ENDPOINT, {
       body: compactParams(params),
@@ -29,6 +42,12 @@ export class TextToImage {
     });
   }
 
+  /**
+   * Fetch the current status of a text-to-image task.
+   * @param id The task id.
+   * @param options Per-request overrides.
+   * @returns The current text-to-image task status.
+   */
   async get(id: string, options?: RequestOptions): Promise<TextToImageResponse> {
     return this.http.request<TextToImageResponse>('GET', `${ENDPOINT}/${id}`, {
       ...options,
