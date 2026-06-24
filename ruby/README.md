@@ -7,13 +7,13 @@ This qwen image api README is the Ruby package guide inside the public `qwen2-sd
 ## Install
 
 ```bash
-gem install runapi-qwen2
+gem install runapi-qwen_2
 ```
 
 ## Quick start
 
 ```ruby
-require "runapi-qwen2"
+require "runapi-qwen_2"
 
 client = RunApi::Qwen2::Client.new
 task = client.generations.create(

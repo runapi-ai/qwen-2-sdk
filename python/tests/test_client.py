@@ -137,7 +137,7 @@ def test_run_narrows_completed_type():
 
 def test_rejects_unknown_model():
     client = Qwen2Client(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="Invalid model"):
+    with pytest.raises(ValidationError, match="model must be one of"):
         client.text_to_image.create(model="nope", prompt="hi there")
 
 

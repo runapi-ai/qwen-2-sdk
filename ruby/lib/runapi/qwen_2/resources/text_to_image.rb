@@ -31,7 +31,7 @@ module RunApi
         # @return [RunApi::Qwen2::Types::TextToImageResponse] task creation result with id
         def create(**params)
           params = compact_params(params)
-          validate_params!(params)
+          validate_contract!(CONTRACT["text-to-image"], params)
           request(:post, ENDPOINT, body: params)
         end
 
@@ -41,20 +41,6 @@ module RunApi
         # @return [RunApi::Qwen2::Types::TextToImageResponse] current text-to-image status
         def get(id)
           request(:get, "#{ENDPOINT}/#{id}")
-        end
-
-        private
-
-        def validate_params!(params)
-          raise Core::ValidationError, "model is required" unless param(params, :model)
-          raise Core::ValidationError, "prompt is required" unless param(params, :prompt)
-          model = param(params, :model)
-          unless Types::TEXT_TO_IMAGE_MODELS.include?(model)
-            raise Core::ValidationError, "Invalid model: #{model}. Must be one of: #{Types::TEXT_TO_IMAGE_MODELS.join(", ")}"
-          end
-
-          validate_optional!(params, :aspect_ratio, Types::TEXT_TO_IMAGE_ASPECT_RATIOS)
-          validate_optional!(params, :output_format, Types::OUTPUT_FORMATS)
         end
       end
     end

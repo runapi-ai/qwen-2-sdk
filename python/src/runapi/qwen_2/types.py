@@ -4,14 +4,6 @@ from __future__ import annotations
 
 from runapi.core import BaseModel, TaskResponse, optional, required
 
-MODELS = ["qwen-2-edit-image", "qwen-2-text-to-image", "qwen-2-remix-image"]
-EDIT_MODELS = ["qwen-2-edit-image"]
-TEXT_TO_IMAGE_MODELS = ["qwen-2-text-to-image"]
-REMIX_IMAGE_MODELS = ["qwen-2-remix-image"]
-EDIT_IMAGE_ASPECT_RATIOS = ["1:1", "2:3", "3:2", "3:4", "4:3", "9:16", "16:9", "21:9"]
-TEXT_TO_IMAGE_ASPECT_RATIOS = ["1:1", "3:4", "4:3", "9:16", "16:9"]
-OUTPUT_FORMATS = ["jpeg", "png"]
-
 
 class Image(BaseModel):
     """A generated image reference."""
