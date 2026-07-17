@@ -1,8 +1,8 @@
-# Qwen Image API Go SDK for RunAPI
+# Qwen 2 API Go SDK for RunAPI
 
-The qwen image api Go SDK is the language-specific package for Qwen 2 on RunAPI. Use this qwen image api package for text-to-image, image editing, and creative production flows when your application needs JSON request bodies, task status lookup, and consistent RunAPI errors in Go.
+The Qwen 2 Go SDK is the language-specific package for Qwen 2 on RunAPI. Use this package for image generation, image editing, and creative production workflows when your application needs request bodies, task status lookup, and consistent RunAPI errors in Go.
 
-This qwen image api README is the Go package guide inside the public `qwen2-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/qwen-2; for API reference, use https://runapi.ai/docs#qwen-2; for SDK docs, use https://runapi.ai/docs#sdk-qwen-2.
+This README is the Go package guide inside the public `qwen-2-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/qwen-2; for API reference, use https://runapi.ai/docs#qwen-2; for SDK docs, use https://runapi.ai/docs#sdk-qwen-2.
 
 ## Install
 
@@ -16,14 +16,14 @@ go get github.com/runapi-ai/qwen2-sdk/go@latest
 import (
   "context"
 
-  "github.com/runapi-ai/qwen2-sdk/go/qwen2"
+  "github.com/runapi-ai/qwen-2-sdk/go/qwen2"
 )
 
 client, err := qwen2.NewClient()
-task, err := client.Generations.Create(context.Background(), qwen2.GenerationParams{
+task, err := client.TextToImage.Create(context.Background(), qwen2.TextToImageParams{
   // Pass the Qwen 2 JSON request body from https://runapi.ai/docs#qwen-2.
 })
-status, err := client.Generations.Get(context.Background(), task.ID)
+status, err := client.TextToImage.Get(context.Background(), task.ID)
 ```
 
 Use `create` when you want to submit a task and return quickly, `get` when you need the latest task state, and `run` when a script should create and poll until completion. In web request handlers, prefer `create` plus webhook or later `get` polling so a worker is not held open.
@@ -32,7 +32,7 @@ RunAPI-generated file URLs are temporary. Download and store generated images, v
 
 ## Language notes
 
-Use the public Go module with `github.com/runapi-ai/core-sdk/go` options when building image services, CLIs, or workers. The available resources include generations, image to images, and edits. Keep `RUNAPI_API_KEY` in the environment or your secret manager; never commit API keys or callback secrets.
+Use the public Go module with `github.com/runapi-ai/core-sdk/go` options when building image services, CLIs, or workers. The available resources are `TextToImage`, `RemixImage`, and `EditImage`. Keep `RUNAPI_API_KEY` in the environment or your secret manager; never commit API keys or callback secrets.
 
 ## Links
 

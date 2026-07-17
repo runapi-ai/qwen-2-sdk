@@ -1,8 +1,8 @@
-# Qwen 2 Python SDK for RunAPI
+# Qwen 2 API Python SDK for RunAPI
 
-The Qwen 2 Python SDK is the language-specific package for Qwen 2 on RunAPI. Use this qwen package for text-to-image, image editing, and creative production flows when your application needs JSON request bodies, task status lookup, and consistent RunAPI errors in Python.
+The Qwen 2 Python SDK is the language-specific package for Qwen 2 on RunAPI. Use this package for image generation, image editing, and creative production workflows when your application needs request bodies, task status lookup, and consistent RunAPI errors in Python.
 
-This qwen README is the Python package guide inside the public `qwen2-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/qwen-2; for API reference, use https://runapi.ai/docs#qwen-2; for SDK docs, use https://runapi.ai/docs#sdk-qwen-2.
+This README is the Python package guide inside the public `qwen-2-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/qwen-2; for API reference, use https://runapi.ai/docs#qwen-2; for SDK docs, use https://runapi.ai/docs#sdk-qwen-2.
 
 ## Install
 
@@ -27,7 +27,7 @@ status = client.text_to_image.get(task.id)
 edit = client.edit_image.create(
     model="qwen-2-edit-image",
     prompt="Replace the background with a neon-lit city skyline",
-    source_image_url="https://example.com/source.jpg",
+    source_image_url="https://cdn.runapi.ai/public/samples/image.jpg",
 )
 ```
 

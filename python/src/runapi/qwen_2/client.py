@@ -20,7 +20,7 @@ class Qwen2Client:
         result = client.edit_image.run(
             model="qwen-2-edit-image",
             prompt="Replace the background with a neon-lit city skyline",
-            source_image_url="https://example.com/input.jpg",
+            source_image_url="https://cdn.runapi.ai/public/samples/image.jpg",
         )
     """
 
