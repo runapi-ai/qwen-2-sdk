@@ -16,7 +16,6 @@ import (
 
 const (
 	textToImagePath = "/api/v1/qwen_2/text_to_image"
-	remixImagePath  = "/api/v1/qwen_2/remix_image"
 	editImagePath   = "/api/v1/qwen_2/edit_image"
 )
 
@@ -25,8 +24,6 @@ type Client struct {
 	base.Base
 	// TextToImage provides text-to-image operations.
 	TextToImage *TextToImage
-	// RemixImage provides image remix operations.
-	RemixImage *RemixImage
 	// EditImage provides image edit operations.
 	EditImage *EditImage
 }
@@ -49,7 +46,6 @@ func NewClientWithHTTP(httpClient core.HTTPClient) *Client {
 	return &Client{
 		Base:        base.New(httpClient),
 		TextToImage: &TextToImage{http: httpClient},
-		RemixImage:  &RemixImage{http: httpClient},
 		EditImage:   &EditImage{http: httpClient},
 	}
 }
@@ -77,31 +73,6 @@ func (r *TextToImage) Get(ctx context.Context, id string, opts ...option.Request
 func (r *TextToImage) Run(ctx context.Context, params TextToImageParams, opts ...option.RequestOption) (*TextToImageResponse, error) {
 	_, pollingOptions := option.ResolveRequestOptions(opts...)
 	return core.RunAsync(ctx, func(ctx context.Context) (*core.TaskCreateResponse, error) { return r.Create(ctx, params, opts...) }, func(ctx context.Context, id string) (*TextToImageResponse, error) { return r.Get(ctx, id, opts...) }, pollingOptions)
-}
-
-// RemixImage creates prompt-guided variations from a source image.
-type RemixImage struct{ http core.HTTPClient }
-
-// Create submits a remix-image task and returns immediately with a task id.
-func (r *RemixImage) Create(ctx context.Context, params RemixImageParams, opts ...option.RequestOption) (*core.TaskCreateResponse, error) {
-	requestOptions, _ := option.ResolveRequestOptions(opts...)
-	body := core.CompactParams(params)
-	if err := core.ValidateParams(contractSchema["remix-image"], body); err != nil {
-		return nil, err
-	}
-	return core.PostJSON[core.TaskCreateResponse](ctx, r.http, remixImagePath, body, requestOptions)
-}
-
-// Get fetches the current status of a remix-image task by id.
-func (r *RemixImage) Get(ctx context.Context, id string, opts ...option.RequestOption) (*RemixImageResponse, error) {
-	requestOptions, _ := option.ResolveRequestOptions(opts...)
-	return core.GetJSON[RemixImageResponse](ctx, r.http, core.ResourcePath(remixImagePath, id), requestOptions)
-}
-
-// Run submits a remix-image task and polls until it completes.
-func (r *RemixImage) Run(ctx context.Context, params RemixImageParams, opts ...option.RequestOption) (*RemixImageResponse, error) {
-	_, pollingOptions := option.ResolveRequestOptions(opts...)
-	return core.RunAsync(ctx, func(ctx context.Context) (*core.TaskCreateResponse, error) { return r.Create(ctx, params, opts...) }, func(ctx context.Context, id string) (*RemixImageResponse, error) { return r.Get(ctx, id, opts...) }, pollingOptions)
 }
 
 // EditImage edits input images according to a natural-language prompt.

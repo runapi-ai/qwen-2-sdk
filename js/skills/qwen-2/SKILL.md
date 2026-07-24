@@ -63,7 +63,7 @@ runapi qwen-2 text-to-image --async --input-file request.json
 runapi wait <task-id> --service qwen-2 --action text-to-image
 ```
 
-Available commands: `text-to-image`, `remix-image`, `edit-image`.
+Available commands: `text-to-image`, `edit-image`.
 
 ## Generated file storage
 
@@ -78,5 +78,4 @@ RunAPI-generated file URLs are temporary. Download and store generated images, v
 ## Variants
 
 - [Text to image](https://runapi.ai/models/qwen-2/text-to-image.md)
-- [Image remix](https://runapi.ai/models/qwen-2/remix-image.md)
 - [Image edit](https://runapi.ai/models/qwen-2/edit-image.md)

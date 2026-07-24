@@ -17,17 +17,12 @@ module RunApi
       end
 
       class TextToImageResponse < ImageTaskResponse; end
-      class RemixImageResponse < ImageTaskResponse; end
       class EditImageResponse < ImageTaskResponse; end
 
       # Narrowed responses returned by +run()+ methods once polling observes
       # +status: "completed"+. +images+ is required so consumers never
       # have to null-check it on a successful task.
       class CompletedTextToImageResponse < TextToImageResponse
-        required :images, [-> { Image }]
-      end
-
-      class CompletedRemixImageResponse < RemixImageResponse
         required :images, [-> { Image }]
       end
 

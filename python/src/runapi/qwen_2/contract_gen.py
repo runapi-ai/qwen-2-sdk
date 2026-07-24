@@ -21,31 +21,6 @@ CONTRACT = {
             }
         }
     },
-    "remix-image": {
-        "models": ["qwen-2-remix-image"],
-        "fields_by_model": {
-            "qwen-2-remix-image": {
-                "acceleration": {
-                    "enum": ["none", "regular", "high"]
-                },
-                "num_inference_steps": {
-                    "type": "integer"
-                },
-                "output_format": {
-                    "enum": ["png", "jpeg"]
-                },
-                "prompt": {
-                    "required": True
-                },
-                "seed": {
-                    "type": "integer"
-                },
-                "source_image_url": {
-                    "required": True
-                }
-            }
-        }
-    },
     "text-to-image": {
         "models": ["qwen-2-text-to-image"],
         "fields_by_model": {

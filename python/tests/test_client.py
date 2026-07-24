@@ -4,12 +4,10 @@ from runapi.core import config
 from runapi.core.errors import AuthenticationError, ValidationError
 from runapi.qwen_2 import Qwen2Client
 from runapi.qwen_2.resources.edit_image import EditImage
-from runapi.qwen_2.resources.remix_image import RemixImage
 from runapi.qwen_2.resources.text_to_image import TextToImage
 from runapi.qwen_2.types import (
     CompletedTextToImageResponse,
     EditImageResponse,
-    RemixImageResponse,
     TextToImageResponse,
 )
 
@@ -62,14 +60,12 @@ def test_uses_injected_http_client():
     fake = FakeHttp()
     client = Qwen2Client(api_key="k", http_client=fake)
     assert client.text_to_image._http is fake
-    assert client.remix_image._http is fake
     assert client.edit_image._http is fake
 
 
 def test_exposes_resource_accessors():
     client = Qwen2Client(api_key="k", http_client=FakeHttp())
     assert isinstance(client.text_to_image, TextToImage)
-    assert isinstance(client.remix_image, RemixImage)
     assert isinstance(client.edit_image, EditImage)
 
 
@@ -113,14 +109,6 @@ def test_edit_create_posts_compacted_body():
     assert isinstance(result, EditImageResponse)
 
 
-def test_remix_get_by_id():
-    fake = FakeHttp({"id": "r1", "status": "processing"})
-    client = Qwen2Client(api_key="k", http_client=fake)
-    result = client.remix_image.get("r1")
-    assert fake.calls == [("get", "/api/v1/qwen_2/remix_image/r1", None)]
-    assert isinstance(result, RemixImageResponse)
-
-
 def test_run_narrows_completed_type():
     fake = FakeHttp(
         {"id": "t1", "status": "pending"},
@@ -159,18 +147,12 @@ def test_edit_requires_source_image_url():
         client.edit_image.create(model="qwen-2-edit-image", prompt="make it pop")
 
 
-def test_remix_requires_source_image_url():
-    client = Qwen2Client(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="source_image_url is required"):
-        client.remix_image.create(model="qwen-2-remix-image", prompt="remix this")
-
-
 def test_rejects_bad_output_format():
     client = Qwen2Client(api_key="k", http_client=FakeHttp())
     with pytest.raises(ValidationError, match="output_format"):
-        client.remix_image.create(
-            model="qwen-2-remix-image",
-            prompt="remix this",
+        client.edit_image.create(
+            model="qwen-2-edit-image",
+            prompt="edit this",
             source_image_url="https://x/in.jpg",
             output_format="webp",
         )

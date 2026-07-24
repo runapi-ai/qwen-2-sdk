@@ -5,19 +5,16 @@ import ai.runapi.core.ClientOptions;
 import ai.runapi.core.http.HttpTransport;
 import java.net.URI;
 import ai.runapi.qwen2.resources.EditImageResource;
-import ai.runapi.qwen2.resources.RemixImageResource;
 import ai.runapi.qwen2.resources.TextToImageResource;
 
 /** Qwen2 model-family Java SDK client. */
 public final class Qwen2Client extends BaseClient {
   private final EditImageResource editImage;
-  private final RemixImageResource remixImage;
   private final TextToImageResource textToImage;
 
   private Qwen2Client(ClientOptions options) {
     super(options);
     this.editImage = new EditImageResource(transport(), options());
-    this.remixImage = new RemixImageResource(transport(), options());
     this.textToImage = new TextToImageResource(transport(), options());
   }
 
@@ -29,11 +26,6 @@ public final class Qwen2Client extends BaseClient {
   /** Edit Image operations. */
   public EditImageResource editImage() {
     return editImage;
-  }
-
-  /** Remix Image operations. */
-  public RemixImageResource remixImage() {
-    return remixImage;
   }
 
   /** Text To Image operations. */

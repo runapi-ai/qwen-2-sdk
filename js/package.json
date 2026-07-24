@@ -4,7 +4,7 @@
     "slug": "qwen-2"
   },
   "version": "0.2.8",
-  "description": "RunAPI Qwen 2 SDK for text-to-image, remix-image, and edit-image workflows in JavaScript, Python, Ruby, Go, Java, and PHP",
+  "description": "RunAPI Qwen 2 SDK for text-to-image and edit-image workflows in JavaScript, Python, Ruby, Go, Java, and PHP",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -31,7 +31,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@runapi.ai/core": "^0.2.11"
+    "@runapi.ai/core": "^0.2.15"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

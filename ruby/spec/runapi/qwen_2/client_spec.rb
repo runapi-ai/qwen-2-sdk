@@ -30,7 +30,6 @@ RSpec.describe RunApi::Qwen2::Client do
       client = described_class.new(api_key: "test-key", http_client: custom_http)
       expect(client.edit_image.instance_variable_get(:@http)).to eq(custom_http)
       expect(client.text_to_image.instance_variable_get(:@http)).to eq(custom_http)
-      expect(client.remix_image.instance_variable_get(:@http)).to eq(custom_http)
     end
 
     it "falls back to Core::HttpClient when http_client is nil" do
@@ -43,7 +42,6 @@ RSpec.describe RunApi::Qwen2::Client do
   it "exposes resource accessors" do
     client = described_class.new(api_key: "test-key")
     expect(client.text_to_image).to be_a(RunApi::Qwen2::Resources::TextToImage)
-    expect(client.remix_image).to be_a(RunApi::Qwen2::Resources::RemixImage)
     expect(client.edit_image).to be_a(RunApi::Qwen2::Resources::EditImage)
   end
 end

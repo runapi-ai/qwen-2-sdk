@@ -26,12 +26,6 @@ class TextToImageResponse(ImageTaskResponse):
     pass
 
 
-class RemixImageResponse(ImageTaskResponse):
-    """Response for a remix-image task."""
-
-    pass
-
-
 class EditImageResponse(ImageTaskResponse):
     """Response for an edit-image task."""
 
@@ -39,12 +33,6 @@ class EditImageResponse(ImageTaskResponse):
 
 
 class CompletedTextToImageResponse(TextToImageResponse):
-    """Narrowed response from ``run()`` once polling observes completion."""
-
-    images = required([lambda: Image])
-
-
-class CompletedRemixImageResponse(RemixImageResponse):
     """Narrowed response from ``run()`` once polling observes completion."""
 
     images = required([lambda: Image])

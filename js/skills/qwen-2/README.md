@@ -69,7 +69,6 @@ const result = await client.textToImage.run({
 ## Variants
 
 - [Text to image](https://runapi.ai/models/qwen-2/text-to-image)
-- [Image remix](https://runapi.ai/models/qwen-2/remix-image)
 - [Image edit](https://runapi.ai/models/qwen-2/edit-image)
 
 ## Agent rules

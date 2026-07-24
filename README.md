@@ -22,7 +22,7 @@
 </div>
 <br/>
 
-The Qwen 2 API SDK packages JavaScript, Python, Ruby, Go, Java, and PHP clients for Qwen 2 on RunAPI. Use it for text-to-image, remix-image, and edit-image workflows when your app needs typed request builders, predictable task polling, file upload helpers, account helpers, and consistent RunAPI errors.
+The Qwen 2 API SDK packages JavaScript, Python, Ruby, Go, Java, and PHP clients for Qwen 2 on RunAPI. Use it for text-to-image and edit-image workflows when your app needs typed request builders, predictable task polling, file upload helpers, account helpers, and consistent RunAPI errors.
 
 Qwen 2 is listed in the RunAPI model catalog at https://runapi.ai/models/qwen-2. Variant pages below carry pricing, rate-limit, and commercial-usage details. The public `qwen-2-sdk` repository groups the non-PHP language packages, examples, CI, and release tags for this model. The PHP package is released from a split Composer repository.
 
@@ -57,7 +57,7 @@ Use the Java BOM when installing multiple RunAPI Java modules:
 
 ```kotlin
 dependencies {
-  implementation(platform("ai.runapi:runapi-bom:0.1.7"))
+  implementation(platform("ai.runapi:runapi-bom:0.2.6"))
   implementation("ai.runapi:runapi-qwen-2")
 }
 ```
@@ -122,7 +122,6 @@ Most media endpoints are asynchronous. `create()` submits a task and returns its
 
 Use the most specific Qwen 2 variant page for pricing, rate limits, and commercial usage:
 - [Text to image](https://runapi.ai/models/qwen-2/text-to-image)
-- [Image remix](https://runapi.ai/models/qwen-2/remix-image)
 - [Image edit](https://runapi.ai/models/qwen-2/edit-image)
 
 Default pricing link for the Qwen 2 SDK: https://runapi.ai/models/qwen-2/text-to-image
