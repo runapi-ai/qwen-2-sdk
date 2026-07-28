@@ -110,8 +110,8 @@ Most media endpoints are asynchronous. `create()` submits a task and returns its
 ## Public links
 
 - Model page: https://runapi.ai/models/qwen-2
-- SDK docs: https://runapi.ai/docs#sdk-qwen-2
-- Product docs: https://runapi.ai/docs#qwen-2
+- SDK docs: https://runapi.ai/docs/resources/sdks
+- Product docs: https://runapi.ai/docs/api/qwen-2/text-to-image
 - SDK repository: https://github.com/runapi-ai/qwen-2-sdk
 - PHP package repository: https://github.com/runapi-ai/qwen-2-php
 - Skill repository: https://github.com/runapi-ai/qwen-2

@@ -2,7 +2,7 @@
 
 The Qwen 2 Ruby SDK is the language-specific package for Qwen 2 on RunAPI. Use this package for image generation, image editing, and creative production workflows when your application needs request bodies, task status lookup, and consistent RunAPI errors in Ruby.
 
-This README is the Ruby package guide inside the public `qwen-2-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/qwen-2; for API reference, use https://runapi.ai/docs#qwen-2; for SDK docs, use https://runapi.ai/docs#sdk-qwen-2.
+This README is the Ruby package guide inside the public `qwen-2-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/qwen-2; for API reference, use https://runapi.ai/docs/api/qwen-2/text-to-image; for SDK docs, use https://runapi.ai/docs/resources/sdks.
 
 ## Install
 
@@ -17,7 +17,7 @@ require "runapi/qwen_2"
 
 client = RunApi::Qwen2::Client.new
 task = client.text_to_image.create(
-  # Pass the Qwen 2 JSON request body from https://runapi.ai/docs#qwen-2.
+  # Pass the Qwen 2 JSON request body from https://runapi.ai/docs/api/qwen-2/text-to-image.
 )
 status = client.text_to_image.get(task.id)
 ```
@@ -33,8 +33,8 @@ Use Ruby keyword arguments and the `RunApi::Qwen2` error classes when building i
 ## Links
 
 - Model page: https://runapi.ai/models/qwen-2
-- SDK docs: https://runapi.ai/docs#sdk-qwen-2
-- Product docs: https://runapi.ai/docs#qwen-2
+- SDK docs: https://runapi.ai/docs/resources/sdks
+- Product docs: https://runapi.ai/docs/api/qwen-2/text-to-image
 - Pricing and rate limits: https://runapi.ai/models/qwen-2/text-to-image
 - Provider comparison: https://runapi.ai/providers/alibaba
 - Full catalog: https://runapi.ai/models
