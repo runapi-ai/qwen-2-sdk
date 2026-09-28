@@ -28,8 +28,7 @@ func TestEditImageCreate(t *testing.T) {
 	stub := &stubHTTPClient{response: json.RawMessage(`{"id":"task_123","status":"processing"}`)}
 	client := NewClientWithHTTP(stub)
 	resp, err := client.EditImage.Create(context.Background(), EditImageParams{
-		Model: "qwen-2-edit-image", Prompt: "make it pop", SourceImageURL: "https://cdn.runapi.ai/public/samples/input.jpg",
-	})
+		Model: "qwen-2-edit-image", Prompt: "make it pop", SourceImageURL: "https://cdn.runapi.ai/public/samples/input.jpg"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -60,7 +59,7 @@ func TestTextToImageCreate(t *testing.T) {
 }
 
 func TestEditImageGet(t *testing.T) {
-	stub := &stubHTTPClient{response: json.RawMessage(`{"id":"task_456","status":"completed","images":[{"url":"https://file.runapi.ai/result.jpg"}]}`)}
+	stub := &stubHTTPClient{response: json.RawMessage(`{"id":"task_456","status":"completed", "usage": {"cost": 0.05},"images":[{"url":"https://file.runapi.ai/result.jpg"}]}`)}
 	client := NewClientWithHTTP(stub)
 	resp, err := client.EditImage.Get(context.Background(), "task_abc")
 	if err != nil {

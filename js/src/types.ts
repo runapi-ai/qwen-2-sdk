@@ -1,4 +1,4 @@
-import type { AsyncTaskStatus, TaskBillingResponse, TaskResponse } from '@runapi.ai/core';
+import type { AsyncTaskStatus, TaskResponse } from '@runapi.ai/core';
 
 /** All Qwen 2 model variants, each dedicated to a single operation type. */
 export type Qwen2Model = 'qwen-2-edit-image' | 'qwen-2-text-to-image';
@@ -42,7 +42,7 @@ export interface EditImageParams {
   callback_url?: string;
 }
 
-export interface TaskCreateResponse extends TaskBillingResponse {
+export interface TaskCreateResponse {
   id: string;
 }
 

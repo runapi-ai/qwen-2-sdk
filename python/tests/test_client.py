@@ -79,8 +79,7 @@ def test_create_posts_compacted_body():
         model="qwen-2-text-to-image", prompt="hello world", aspect_ratio="1:1", output_format=None
     )
     assert fake.calls == [
-        ("post", "/api/v1/qwen_2/text_to_image", {"model": "qwen-2-text-to-image", "prompt": "hello world", "aspect_ratio": "1:1"}),
-    ]
+        ("post", "/api/v1/qwen_2/text_to_image", {"model": "qwen-2-text-to-image", "prompt": "hello world", "aspect_ratio": "1:1"})]
     assert isinstance(result, TextToImageResponse)
 
 
@@ -104,15 +103,14 @@ def test_edit_create_posts_compacted_body():
             "post",
             "/api/v1/qwen_2/edit_image",
             {"model": "qwen-2-edit-image", "prompt": "make it pop", "source_image_url": "https://x/in.jpg"},
-        ),
-    ]
+        )]
     assert isinstance(result, EditImageResponse)
 
 
 def test_run_narrows_completed_type():
     fake = FakeHttp(
         {"id": "t1", "status": "pending"},
-        {"id": "t1", "status": "completed", "images": [{"url": "https://x/y.png"}]},
+        {"id": "t1", "status": "completed", "usage": {"cost": 0.05}, "images": [{"url": "https://x/y.png"}]},
     )
     client = Qwen2Client(api_key="k", http_client=fake)
     result = client.text_to_image.run(model="qwen-2-text-to-image", prompt="a serene lake")
