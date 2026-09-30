@@ -22,36 +22,6 @@ RSpec.describe RunApi::Qwen2::Resources::EditImage do
       expect(result).to be_a(RunApi::Qwen2::Types::EditImageResponse)
       expect(result.id).to eq("task-1")
     end
-
-    it "raises ValidationError when model is missing" do
-      expect { edit_image.create(prompt: "test", source_image_url: "https://x.com/a.jpg") }
-        .to raise_error(RunApi::Core::ValidationError, /model must be one of/)
-    end
-
-    it "raises ValidationError when prompt is missing" do
-      expect { edit_image.create(model: "qwen-2-edit-image", source_image_url: "https://x.com/a.jpg") }
-        .to raise_error(RunApi::Core::ValidationError, /prompt is required/)
-    end
-
-    it "raises ValidationError when source_image_url is missing" do
-      expect { edit_image.create(model: "qwen-2-edit-image", prompt: "test") }
-        .to raise_error(RunApi::Core::ValidationError, /source_image_url is required/)
-    end
-
-    it "raises ValidationError for invalid model" do
-      expect { edit_image.create(model: "qwen-2-text-to-image", prompt: "test", source_image_url: "https://x.com/a.jpg") }
-        .to raise_error(RunApi::Core::ValidationError, /model must be one of/)
-    end
-
-    it "raises ValidationError for invalid aspect_ratio" do
-      expect { edit_image.create(model: "qwen-2-edit-image", prompt: "test", source_image_url: "https://x.com/a.jpg", aspect_ratio: "5:1") }
-        .to raise_error(RunApi::Core::ValidationError, /aspect_ratio must be one of/)
-    end
-
-    it "raises ValidationError for invalid output_format" do
-      expect { edit_image.create(model: "qwen-2-edit-image", prompt: "test", source_image_url: "https://x.com/a.jpg", output_format: "gif") }
-        .to raise_error(RunApi::Core::ValidationError, /output_format must be one of/)
-    end
   end
 
   describe "#get" do

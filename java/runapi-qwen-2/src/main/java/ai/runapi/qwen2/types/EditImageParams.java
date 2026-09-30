@@ -17,8 +17,8 @@ public final class EditImageParams {
 
   private EditImageParams(Builder builder) {
     this.model = builder.model;
-    this.prompt = Qwen2ParamUtils.requireNonBlank(builder.prompt, "prompt");
-    this.sourceImageUrl = Qwen2ParamUtils.requireNonBlank(builder.sourceImageUrl, "sourceImageUrl");
+    this.prompt = builder.prompt;
+    this.sourceImageUrl = builder.sourceImageUrl;
     this.aspectRatio = builder.aspectRatio;
     this.outputFormat = builder.outputFormat;
     this.seed = builder.seed;
@@ -73,32 +73,32 @@ public final class EditImageParams {
 
     /** Sets the model slug using a string value. */
     public Builder model(String value) {
-      this.model = Qwen2ParamUtils.requireNonBlankTrim(value, "model");
+      this.model = value;
       return this;
     }
 
 
     /** Sets the text prompt. */
     public Builder prompt(String value) {
-      this.prompt = Qwen2ParamUtils.requireNonBlank(value, "prompt");
+      this.prompt = value;
       return this;
     }
 
     /** Sets the source image URL. */
     public Builder sourceImageUrl(String value) {
-      this.sourceImageUrl = Qwen2ParamUtils.requireNonBlank(value, "sourceImageUrl");
+      this.sourceImageUrl = value;
       return this;
     }
 
     /** Sets the output aspect ratio. */
     public Builder aspectRatio(String value) {
-      this.aspectRatio = Qwen2ParamUtils.requireNonBlank(value, "aspectRatio");
+      this.aspectRatio = value;
       return this;
     }
 
     /** Sets the output format. */
     public Builder outputFormat(String value) {
-      this.outputFormat = Qwen2ParamUtils.requireNonBlank(value, "outputFormat");
+      this.outputFormat = value;
       return this;
     }
 
@@ -116,7 +116,7 @@ public final class EditImageParams {
 
     /** Sets the webhook URL for task completion notifications. */
     public Builder callbackUrl(String value) {
-      this.callbackUrl = Qwen2ParamUtils.requireNonBlank(value, "callbackUrl");
+      this.callbackUrl = value;
       return this;
     }
 
