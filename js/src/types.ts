@@ -10,10 +10,10 @@ export type TextToImageAspectRatio = '1:1' | '3:4' | '4:3' | '9:16' | '16:9';
 /** Output image encoding format. */
 export type OutputFormat = 'jpeg' | 'png';
 
-/** Parameters for text-to-image generation. Prompt up to 800 characters. */
+/** Parameters for text-to-image generation. Prompt up to 5000 characters. */
 export interface TextToImageParams {
   model: 'qwen-2-text-to-image';
-  /** Image description (up to 800 chars). */
+  /** Image description (up to 5000 chars). */
   prompt: string;
   aspect_ratio?: TextToImageAspectRatio;
   /** Integer seed for reproducible results. */

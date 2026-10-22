@@ -8,7 +8,7 @@ type TaskStatus string
 // TextToImageParams configures a text-to-image generation request.
 type TextToImageParams struct {
 	Model               string `json:"model" help:"required; model slug"`
-	Prompt              string `json:"prompt" help:"required; up to 800 chars"`
+	Prompt              string `json:"prompt" help:"required; up to 5000 chars"`
 	AspectRatio         string `json:"aspect_ratio,omitempty" help:"optional; output aspect ratio; Default: 16:9"`
 	Seed                *int   `json:"seed,omitempty" help:"optional; integer seed for reproducible results"`
 	OutputFormat        string `json:"output_format,omitempty" help:"optional; output format; Default: png"`
