@@ -1,5 +1,12 @@
 # Changelog
 
+## [js/v0.3.2](https://github.com/runapi-ai/qwen-2-sdk/releases/tag/js%2Fv0.3.2) - 2026-10-28
+
+### Changed
+- Update development test tooling to Vitest 3 with Vite 6.
+- Update development test tooling to Vitest 4.1.11 with Vite 6.4.4.
+
+
 ## [js/v0.3.1](https://github.com/runapi-ai/qwen-2-sdk/releases/tag/js%2Fv0.3.1), [go/v0.3.1](https://github.com/runapi-ai/qwen-2-sdk/releases/tag/go%2Fv0.3.1) - 2026-10-22
 
 ### Changed
